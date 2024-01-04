@@ -269,6 +269,9 @@ class LiterallyCanvas {
 
     pointerUp(x, y) {
         const p = this.clientCoordsToDrawingCoords(x, y);
+        if (!this.tool) {
+            return null;
+        }
         if (this.tool.usesSimpleAPI) {
             if (this.isDragging) {
                 this.tool.end(p.x, p.y, this);
